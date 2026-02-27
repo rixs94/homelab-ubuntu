@@ -1,1 +1,62 @@
-#docker-compose 
+services:
+  mariadb:
+    image: mariadb:10.6
+    container_name: mariadb
+    restart: always
+    env_file:
+      - ../.env
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - internal
+
+  nextcloud:
+    image: nextcloud:latest
+    container_name: nextcloud
+    restart: always
+    ports:
+      - "8080:80"
+    env_file:
+      - ../.env
+    volumes:
+      - nextcloud_data:/var/www/html
+    depends_on:
+      - mariadb
+    networks:
+      - internal
+
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    restart: always
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "8090:80"
+    env_file:
+      - ../.env
+    volumes:
+      - pihole_data:/etc/pihole
+    networks:
+      - internal
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: always
+    ports:
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - internal
+
+volumes:
+  db_data:
+  nextcloud_data:
+  pihole_data:
+  portainer_data:
+
+networks:
+  internal:
