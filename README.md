@@ -17,7 +17,7 @@ Ich wollte eine **vollständig nachvollziehbare, sichere Self-Hosting-Umgebung**
 | Komponente       | Details |
 |-----------------|---------|
 | CPU / RAM       | Intel i5 10400 / 32GB RAM |
-| Storage         | 2x 2TB SSD (RAID1) |
+| Storage         | 1x 2TB SSD |
 | OS              | Ubuntu Server 24.04 LTS |
 | Netzwerk        | LAN + Tailscale VPN (kein Portforwarding) |
 | Container-Host  | Docker & Docker Compose |
