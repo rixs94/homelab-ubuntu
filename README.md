@@ -1,16 +1,18 @@
-# 🖥️ Homelab Ubuntu – Self-Hosting Infrastruktur
+# Homelab Ubuntu – Self-Hosting Infrastruktur
 
----
+<div align="center">
+  <img src="./architecture/diagramm.png" alt="Architekturdiagramm" width="400">
+</div>
 
-## 🚀 Motivation
+## Motivation
 
-Ich wollte eine **sichere, nachvollziehbare Self-Hosting-Umgebung**, die stabil läuft, reproduzierbare Deployments ermöglicht und alle wichtigen Dienste containerisiert hostet. 
+Ich wollte eine **vollständig nachvollziehbare, sichere Self-Hosting-Umgebung**, die stabil läuft, reproduzierbare Deployments ermöglicht und alle wichtigen Dienste containerisiert hostet.
 
-Ziel: **LAN/VPN-only Zugriff**, Monitoring, Logging und einfache Wartung – alles dokumentiert.
+**Problem:** Viele Tutorials zeigen nur Einzelservices, oft öffentlich erreichbar, ohne Monitoring oder Backup.  
+**Lösung:** Containerisierte Services, Zugriff **nur über LAN/VPN**, Monitoring mit Netdata, klar dokumentierte Volumes und Backups.  
+**Outcome:** Ein stabiles, reproduzierbares Homelab, das alle benötigten Dienste zuverlässig hostet und leicht zu warten ist.
 
----
-
-## 🖧 Server & Specs
+## Server & Specs
 
 | Komponente       | Details |
 |-----------------|---------|
@@ -22,9 +24,7 @@ Ziel: **LAN/VPN-only Zugriff**, Monitoring, Logging und einfache Wartung – all
 | Monitoring      | Netdata (Dashboard & Alerts) |
 | Zugriff         | Admin nur LAN/VPN, SSH Passwort (Key optional später) |
 
----
-
-## 📦 Container-Stacks
+## Container-Stacks
 
 | Dienst       | Zweck                       | Zugang            | Daten-Volume          |
 |-------------|-----------------------------|-----------------|--------------------|
@@ -35,17 +35,13 @@ Ziel: **LAN/VPN-only Zugriff**, Monitoring, Logging und einfache Wartung – all
 
 > Alle Container laufen in isolierten Docker-Netzwerken.
 
----
-
-## 📊 Monitoring
+## Monitoring (Netdata)
 
 - Echtzeit-Überwachung von CPU, RAM, Disk, Netzwerk  
 - Alerts bei kritischen Schwellenwerten  
 - Dashboard für schnelle Übersicht & Trendanalyse  
 
----
-
-## ⚡ Praktische Befehle
+## Praktische Befehle
 
 ```bash
 # Container Status prüfen
